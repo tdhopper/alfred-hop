@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>ssh-hop-tool</string>
+	<string>hoppers-hop-tool</string>
 	<key>category</key>
 	<string>Productivity</string>
 	<key>connections</key>
@@ -23,18 +23,20 @@
 	<key>createdby</key>
 	<string>Tim Hopper</string>
 	<key>description</key>
-	<string>Open iTerm to remote machine</string>
+	<string>Use hop for bash to quickly access directories and remote machines</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>SSH Hop</string>
+	<string>Hop</string>
 	<key>objects</key>
 	<array>
 		<dict>
 			<key>config</key>
 			<dict>
 				<key>applescript</key>
-				<string>on alfred_script(q)	tell application "iTerm"		tell the current terminal			(* Loop over the boxes, create a new tab and connect. *)			activate current session			launch session "Default Session"			tell the last session				write text "ssh " &amp; q				write text "PS1='\\[\\e[0;35m\\]\\u\\[\\e[0;33m\\]@\\[\\e[1;34m\\]$(hostname):\\[\\e[0;33m\\]\\W \\[\\e[0m\\]\\$ '"			end tell		end tell	end tellend alfred_script</string>
+				<string>on alfred_script(q)	tell application "iTerm"		tell the current terminal			(* Loop over the boxes, create a new tab and connect. *)			activate current session			launch session "Default Session"			tell the last session
+				write text q				if q starts with "ssh" then					write text "PS1='\\[\\e[0;35m\\]\\u\\[\\e[0;33m\\]@\\[\\e[1;34m\\]$(hostname):\\[\\e[0;33m\\]\\W \\[\\e[0m\\]\\$ '"				end if
+				write text "clear"			end tell		end tell	end tellend alfred_script</string>
 				<key>cachescript</key>
 				<false/>
 			</dict>
@@ -72,7 +74,7 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>Quickly open ssh tunnel in iTerm2 to remote machines defined in ~/.hop.json.db (https://github.com/Cue/hop).</string>
+	<string></string>
 	<key>uidata</key>
 	<dict>
 		<key>D1A0B2E0-3257-440D-8A36-DB23659C273A</key>
