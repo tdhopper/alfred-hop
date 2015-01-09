@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>ssh-hop-tool</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>D1A0B2E0-3257-440D-8A36-DB23659C273A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F142B06A-0BD5-4C7B-AE19-B784F89F35DF</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Tim Hopper</string>
+	<key>description</key>
+	<string>Open iTerm to remote machine</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>SSH Hop</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)	tell application "iTerm"		tell the current terminal			(* Loop over the boxes, create a new tab and connect. *)			activate current session			launch session "Default Session"			tell the last session				write text "ssh " &amp; q				write text "PS1='\\[\\e[0;35m\\]\\u\\[\\e[0;33m\\]@\\[\\e[1;34m\\]$(hostname):\\[\\e[0;33m\\]\\W \\[\\e[0m\\]\\$ '"			end tell		end tell	end tellend alfred_script</string>
+				<key>cachescript</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>F142B06A-0BD5-4C7B-AE19-B784F89F35DF</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>116</integer>
+				<key>keyword</key>
+				<string>hop</string>
+				<key>script</key>
+				<string>python load_machines.py "{query}"</string>
+				<key>title</key>
+				<string>Hop to remote machine</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>D1A0B2E0-3257-440D-8A36-DB23659C273A</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Quickly open ssh tunnel in iTerm2 to remote machines defined in ~/.hop.json.db (https://github.com/Cue/hop).</string>
+	<key>uidata</key>
+	<dict>
+		<key>D1A0B2E0-3257-440D-8A36-DB23659C273A</key>
+		<dict>
+			<key>ypos</key>
+			<real>210</real>
+		</dict>
+		<key>F142B06A-0BD5-4C7B-AE19-B784F89F35DF</key>
+		<dict>
+			<key>ypos</key>
+			<real>200</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>http://www.stiglerdiet.com</string>
+</dict>
+</plist>
